@@ -17,6 +17,7 @@
           <tr>
             <th class="name">姓 名</th>
             <th class="drink">飲 品</th>
+            <th class="size">大小</th>
             <th class="sugar">甜 度</th>
             <th class="ice">冰 量</th>
             <th class="add">配 料</th>
@@ -26,6 +27,7 @@
           <tr v-for="drink in drinkList">
             <td>{{drink.name}}</td>
             <td>{{drink.drink}}</td>
+            <td>{{drink.size}}</td>
             <td>{{drink.sugar}}</td>
             <td>{{drink.ice}}</td>
             <td>{{drink.add}}</td>
@@ -37,9 +39,10 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <th>合計</th>
             <td>{{total}}</td>
-            <td> </td>
+            <td><a href="<?!= url?>" target="_blank">回訂購單</a></td>
           </tr>
         </tbody>
       </table>

@@ -48,6 +48,7 @@ function getOrder(params){
   var htmlTemp = HtmlService.createTemplateFromFile('order.html');
   var drinkList = getOrderFromDB(id);
   htmlTemp.drinkList = JSON.stringify(drinkList);
+  htmlTemp.url = rootUrl+'?do=index&id='+id;
   return htmlTemp.evaluate();
 }
 function postOrder(params) {
