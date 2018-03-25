@@ -29,4 +29,6 @@ A web app based on google app script for group buying.  
    ![](https://raw.githubusercontent.com/Yuan-Yu/GroupBuyApp/master/image/roorURL.PNG?raw=true)
  - Change the following 3 parameters in "程式碼.gs" file : rootUrl, firebaseID, firebaseKey    
    修改在"程式碼.gs"檔案中的三個參數: rootUrl, firebaseID, firebaseKey  
-   ![](https://raw.githubusercontent.com/Yuan-Yu/GroupBuyApp/master/image/inGS.PNG?raw=true)
+   ![](https://raw.githubusercontent.com/Yuan-Yu/GroupBuyApp/master/image/inGS.PNG?raw=true)  
+ - Deploy this project again!    
+   重新部署本專案  
