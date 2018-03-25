@@ -1,11 +1,14 @@
 # GroupBuyApp
 A web app based on google app script for group buying.    
 根據google script建立的團購網站
-
+# Project Demo
+  [Demo](https://script.google.com/macros/s/AKfycbwSPNakaOxxDFGH8iHw_ZzQ3J7u3QpZY_ougEmyEQqpohJJiz4/exec)
 # Requirement (需求)
  - Google app script 
  - Google Firebase Realtime Database 
-
+# Note
+  If you are interested the font-end page only. Here is the [codepen link](https://codepen.io/flyseed/pen/gegwLw).    
+  本專案的css,html皆由sass,pug模板語言生成. 若想查看原始碼請移至[codepen](https://codepen.io/flyseed/pen/gegwLw)  
 # Setup
  - Create a Firebase realtime database [here](https://console.firebase.google.com/)     
    建立一個Firebase realtime database [這裡](https://console.firebase.google.com/)
@@ -32,3 +35,4 @@ A web app based on google app script for group buying.  
    ![](https://raw.githubusercontent.com/Yuan-Yu/GroupBuyApp/master/image/inGS.PNG?raw=true)  
  - Deploy this project again!    
    重新部署本專案  
+
