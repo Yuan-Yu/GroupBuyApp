@@ -1,0 +1,97 @@
+<script>
+var drinks=[
+    {name:'熟 成 紅 茶',small:25,large:30,description:'解炸物/燒烤肉類油膩，茶味濃郁帶果香',add:[{name:'白玉珍珠',price:10}]},
+    {name:'鴉 片 紅 茶',small:25,large:30,description:'去除海鮮羶腥，茶味較淡帶花香',add:[{name:'白玉珍珠',price:10}]},
+    {name:'太 妃 紅 茶',small:30,large:35,description:'咖啡與茶的神秘比例搭配',add:[{name:'白玉珍珠',price:10}]},
+    {name:'熟 成 冷 露',small:25,large:35,description:'手工冬瓜與茶更神秘比例搭配',add:[{name:'白玉珍珠',price:10}]},
+    {name:'雪 花 冷 露',small:25,large:30,description:'手工冬瓜獨奏',add:[{name:'白玉珍珠',price:10}]},
+    {name:'春 芽 冷 露',small:25,large:30,description:'手工冬瓜綠茶',add:[{name:'白玉珍珠',price:10}]},
+    {name:'春 芽 綠 茶',small:25,large:30,description:'綠茶，糸糸中帶點彔彔',add:[{name:'白玉珍珠',price:10}]},
+    {name:'春 梅 冰 茶',small:35,large:30,description:'春梅與冬瓜相遇',add:[{name:'白玉珍珠',price:10}]},
+    {name:'冷 露 歐 蕾',small:40,large:45,description:'手工冬瓜與鮮奶',add:[{name:'白玉珍珠',price:10}]},
+    {name:'熟 成 歐 蕾',small:40,large:50,description:'熟成鮮奶茶',add:[{name:'白玉珍珠',price:10}]},
+    {name:'白 玉 歐 蕾',small:50,large:50,description:'珍奶不解釋'},
+    {name:'熟 成 檸 果',small:50,large:null,description:'每日限量的鮮檸紅茶，整顆檸檬搭配7分糖最佳',add:[{name:'白玉珍珠',price:10}]}
+    ];
+var iceTable = ['完全去冰','去冰','微冰','少冰','正常','多冰'];
+var surgarTable = ['無糖','微糖','半糖','少糖','正常糖','多糖'];
+var sizeMap = {'small':'中','large':'大'};
+var app = new Vue({
+  el:'#main',
+  data:{
+    drinks: drinks,
+    preview: {},
+    name: '',
+    exinfo:'',
+    size:'',
+    add: [],
+    surgarid: -1,
+    iceid: -1,
+    message:''
+  },methods: {
+    selectDrink: function(drink){
+      this.preview = drink;
+    },
+    validate: function(){
+      var flag = false;
+      this.message ='';
+      if(this.name == '') this.message ='請填入姓名';
+      if(this.size == '') this.message ='請填選擇大小';
+      if(this.surgarid < 0 ) this.message ='請選擇甜度';
+      if(this.iceid < 0 ) this.message ='請選擇冰度';
+      if(this.message=='') flag = true;
+      return flag;
+    },submit: function(){
+      if(!this.validate())return;
+        postData = {name:this.name,
+                    drink:this.preview.name,
+                    ice: iceTable[this.iceid],
+                    sugar:surgarTable[this.surgarid],
+                    extraInfo:this.exinfo,
+                    size: sizeMap[this.size],
+                    add: this.add.map((e)=>{return e.name}).join(','),
+                    price: this.price,
+                    id:id,
+                    do:'postOrder'};
+        var app = this;
+        onSuccess = ()=>{
+            this.clearOrder();
+            app.message = "完成訂購";
+            setTimeout(()=>{app.message = ""}, 2000)
+         }
+        google.script.run.withSuccessHandler(onSuccess).doPost(postData);
+    },clearOrder: function(){
+      this.clearOrderAdjustment();
+      this.preview = {};
+      this.name = '';
+      this.exinfo ='';
+    },copyLink(){
+      var copyText = document.getElementById("link");
+      copyText.select();
+      document.execCommand("Copy");
+      copyText.blur();
+    },clearOrderAdjustment: function(){
+      this.iceid = -1;
+      this.surgarid = -1;
+      this.add = [];
+      this.size = '';
+    }
+  },computed: {
+      price: function(){
+        if(this.size =='') return null;
+        var price = 0;
+        price += this.preview[this.size];
+        this.add.forEach((e)=>{
+          price += e.price;
+        });
+        return price;
+      }
+  },watch: {
+    preview: function(){
+      this.clearOrderAdjustment();
+    }
+  }
+  
+});
+
+</script>

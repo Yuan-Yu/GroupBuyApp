@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <?!= include('main.css'); ?>
+    <script>id = "<?!= id?>"</script>
+  </head>
+
+
+<body>
+  <div class="main" id="main">
+    <div class="header">
+      <div class="logo"> <span>K</span><span>E</span><span>B</span><span>U</span><span>K</span><span>E</span></div>
+    </div>
+    <div class="container">
+      <div class="menu">
+        <div class="out-box">
+          <div class="in-box">M E N U</div>
+        </div>
+        <div class="spline"></div>
+        <div class="drink-container">
+          <div class="drink" v-for="drink in drinks" @click="selectDrink(drink)">
+            <div class="top">
+              <div class="title">{{drink.name}}</div>
+              <div class="drink-spline"></div>
+              <div class="size">
+                <div class="M" v-if="drink.small != null"> <span>中</span><span class="sbc">:</span><span>{{drink.small}}</span></div><span class="sbc slash">/</span>
+                <div class="L" v-if="drink.large != null"> <span>大</span><span class="sbc">:</span><span>{{drink.large}}</span></div>
+              </div>
+            </div>
+            <div class="description">{{drink.description}}</div>
+          </div>
+        </div>
+        <div class="spline"></div>
+      </div>
+      <div class="order">
+        <div class="order-title"> 
+          <div class="out-box">
+            <div class="in-box">O R D E R</div>
+          </div>
+        </div>
+        <div class="spline"></div>
+        <div class="order-info">
+          <div class="name">
+            <div class="label-name">姓 名 :</div>
+            <input class="text input-name" v-model="name"/>
+          </div>
+          <div class="order-drink">
+            <div class="label-name">飲 品 :</div>
+            <div class="ordor-drink-name">{{preview.name}}</div>
+          </div>
+          <div class="size">
+            <div class="label-name">大 小 :</div>
+            <input v-if="preview.small != undefined" type="radio" id="small" name="size" value="small" v-model="size"/>
+            <label v-if="preview.small != undefined" for="small">中 : {{preview.small}}</label>
+            <input v-if="preview.large != undefined" type="radio" id="large" name="size" value="large" v-model="size"/>
+            <label v-if="preview.large != undefined" for="large">大 : {{preview.large}} </label>
+          </div>
+          <div class="add">
+            <div class="label-name">配 料 :</div><span v-for="item in preview.add">
+              <input type="checkbox" :id="item.name" :value="item" v-model="add"/>
+              <label :for="item.name">{{item.name}}</label></span>
+          </div>
+          <div class="price">
+            <div class="label-name">價 格 :</div><span>{{price}}</span>
+          </div>
+          <div class="info">
+            <div class="label-name">備 註 :</div>
+            <input class="text input-exinfo" v-model="exinfo"/>
+          </div>
+        </div>
+        <div class="is">
+          <div class="ice adjustment-container">
+            <div class="title">冰度</div>
+            <div class="cup">
+              <div class="cup-top">
+                <div class="cup-layer" style="color:#ddd;" @click="iceid = 5">多 冰</div>
+                <div class="cup-layer" style="color:#ddd;" @click="iceid = 4">正 常 冰</div>
+                <div class="cup-layer" style="color:#ddd;" @click="iceid = 3">少 冰</div>
+                <div class="cup-layer" style="color:#ddd;" @click="iceid = 2">微 冰</div>
+                <div class="cup-layer" style="color:#003c4f;" @click="iceid = 1">去 冰</div>
+                <div class="cup-layer" style="color:#003c4f;" @click="iceid = 0">完 全 去 冰</div>
+              </div>
+              <div class="cup-mask"></div>
+              <div class="cup-back">
+                <div class="cup-layer" style="background-color:rgba(0,0,0,0);" v-bind:class="{ seleted: iceid&gt;=5 }"></div>
+                <div class="cup-layer" style="background-color:#0c3956;" v-bind:class="{ seleted: iceid&gt;=4 }"></div>
+                <div class="cup-layer" style="background-color:#36556a;" v-bind:class="{ seleted: iceid&gt;=3 }"></div>
+                <div class="cup-layer" style="background-color:#6e738f;" v-bind:class="{ seleted: iceid&gt;=2 }"></div>
+                <div class="cup-layer" style="background-color:#9ca0a9;" v-bind:class="{ seleted: iceid&gt;=1 }"></div>
+                <div class="cup-layer" style="background-color:#cbccd3;" v-bind:class="{ seleted: iceid&gt;=0 }"></div>
+              </div>
+            </div>
+          </div>
+          <div class="surgar adjustment-container">
+            <div class="title">甜度</div>
+            <div class="cup">
+              <div class="cup-top">
+                <div class="cup-layer" style="color:#ddd;" @click="surgarid = 5">多 糖</div>
+                <div class="cup-layer" style="color:#ddd;" @click="surgarid = 4">正 常 糖</div>
+                <div class="cup-layer" style="color:#ddd;" @click="surgarid = 3">少 糖</div>
+                <div class="cup-layer" style="color:#ddd;" @click="surgarid = 2">半 糖</div>
+                <div class="cup-layer" style="color:#003c4f;" @click="surgarid = 1">微 糖</div>
+                <div class="cup-layer" style="color:#003c4f;" @click="surgarid = 0">無 糖</div>
+              </div>
+              <div class="cup-mask"></div>
+              <div class="cup-back">
+                <div class="cup-layer" style="background-color:rgba(0,0,0,0);" v-bind:class="{ seleted: surgarid&gt;=5 }"></div>
+                <div class="cup-layer" style="background-color:#0c3956;" v-bind:class="{ seleted: surgarid&gt;=4 }"></div>
+                <div class="cup-layer" style="background-color:#36556a;" v-bind:class="{ seleted: surgarid&gt;=3 }"></div>
+                <div class="cup-layer" style="background-color:#6e738f;" v-bind:class="{ seleted: surgarid&gt;=2 }"></div>
+                <div class="cup-layer" style="background-color:#9ca0a9;" v-bind:class="{ seleted: surgarid&gt;=1 }"></div>
+                <div class="cup-layer" style="background-color:#cbccd3;" v-bind:class="{ seleted: surgarid&gt;=0 }"></div>
+              </div>
+            </div>
+          </div>
+          <div class="order-floor">
+            <button @click="submit()">提 交</button><br/><span>{{message}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="other-info">
+        <div class="Share"> <span @click="copyLink()" style="cursor: pointer;">複 製 此 訂 單 網 址</span>
+          <input class="urlink" value="<?!=url?>" type="text" id="link"/>
+         </div>
+        <div class="check-sheet"> <a href="<?!=sheeturl?>" target="_blank">查 看 目 前 訂 購</a></div>
+        <div class="new"><a href="<?!=rootUrl?>" target="_blank">創 建 新 的 訂 單</a></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+</body>
+<?!= include('main.js'); ?>
+</html>
+
+

@@ -1,0 +1,293 @@
+<style>
+body {
+  font-family: Microsoft JhengHei;
+}
+
+div {
+  -webkit-column-gap: 0px;
+  -moz-column-gap: 0px;
+  column-gap: 0px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.logo > span {
+  margin-left: 30px;
+  font-size: 60px;
+  font-weight: 900;
+  color: #ddd;
+}
+
+.main {
+  margin: auto;
+  border-style: solid;
+  border-color: #000;
+  border-width: 0px;
+  background-color: #003c4f;
+  width: 960px;
+}
+
+.header {
+  width: 100%;
+  height: 200px;
+  background-color: #003c4f;
+}
+
+.container {
+  width: 960px;
+  column-count: 2;
+  height: 950px;
+}
+
+.menu {
+  width: 480px;
+  display: inline-block;
+  height: 950px;
+  background-color: #dddddd;
+}
+
+.is {
+  width: 480px;
+  background-color: #be9457;
+  height: 200px;
+}
+
+.order {
+  display: inline-block;
+  width: 480px;
+  background-color: #be9457;
+  height: 680px;
+}
+
+.order-title {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  top: 20px;
+  color: #000;
+}
+
+.out-box {
+  width: 192px;
+  height: 60px;
+  border-style: solid;
+  border-color: #003c4f;
+  border-width: 2px;
+  margin: auto;
+  margin-top: 20px;
+  line-height: 60px;
+}
+
+.in-box {
+  width: 174px;
+  height: 42px;
+  border-style: solid;
+  border-color: #003c4f;
+  border-width: 2px;
+  margin: auto;
+  margin-top: 7px;
+  vertical-align: middle;
+  line-height: 42px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.spline {
+  margin: auto;
+  width: 408px;
+  height: 2px;
+  background-color: #003c4f;
+  margin-top: 20px;
+}
+
+.drink-container {
+  margin: auto;
+  width: 378px;
+}
+
+.drink * {
+  display: inline-block;
+}
+
+.drink {
+  font-size: 18px;
+  font-weight: bold;
+  color: #003c4f;
+  margin: 15px 0 0 0px;
+  cursor: pointer;
+}
+
+.drink .top {
+  display: block;
+}
+
+.drink .top .size {
+  float: right;
+}
+
+.sbc {
+  color: #f0ad51;
+}
+
+.description {
+  margin-top: 6px;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  color: #6f6663;
+}
+
+.slash {
+  margin: 0 10px 0 12px;
+}
+
+.cup {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 200px;
+}
+
+.cup-mask {
+  width: 100px;
+  border-left: 25px solid #be9457;
+  border-right: 25px solid #be9457;
+  border-top: 200px solid transparent;
+  position: absolute;
+  z-index: 1;
+}
+
+.cup-back {
+  height: 200px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0px;
+  z-index: 0;
+}
+
+.cup-layer {
+  width: 150px;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cup-top {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  height: 200px;
+}
+
+.adjustment-container {
+  margin: 25px 0 0 25px;
+  display: inline-block;
+}
+
+.adjustment-container .title {
+  display: inline-block;
+  width: 30px;
+  height: 60px;
+  border-style: solid;
+  border-color: #ddd;
+  float: left;
+  text-align: center;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 20px;
+  vertical-align: middle;
+  line-height: 30px;
+  margin-right: 20px;
+}
+
+.name *, .order-drink *, .add *, .info *, .size *, .price * {
+  display: inline-block;
+}
+
+.order-info {
+  width: 350px;
+  margin: auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-info > * {
+  margin-top: 18px;
+}
+
+input.text {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: transparent;
+  border-width: 0px;
+  border-bottom: 2px solid;
+}
+
+.label-name {
+  margin-right: 8px;
+}
+
+.seleted {
+  background: repeating-linear-gradient(60deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) 5px, transparent 0, transparent 10px);
+}
+
+button {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: inherit;
+  background-color: transparent;
+  border-style: solid;
+  color: #003c4f;
+  border-color: #003c4f;
+}
+
+button:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.order-floor {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.other-info {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: #ddd;
+  font-weight: bold;
+}
+
+.other-info > * {
+  margin-top: 8px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.urlink {
+  background-color: transparent;
+  border-width: 0px;
+  color: transparent;
+}
+
+
+
+</style>
+

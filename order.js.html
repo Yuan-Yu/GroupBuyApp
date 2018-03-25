@@ -1,0 +1,18 @@
+<script>
+var app = new Vue({
+  el:"#app",
+  data:{
+    drinkList: drinkList
+  },
+  computed: {
+    total: function(){
+      var total= 0;
+      Object.values(this.drinkList).forEach((drink)=>{
+        total += Number(drink.price)
+      });
+      return total
+    }
+  }
+  
+});
+</script>

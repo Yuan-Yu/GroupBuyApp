@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <?!= include('order.css'); ?>
+    <script>drinkList = <?!= drinkList?></script>
+  </head>
+
+
+<body>
+  <div class="main" id="main">
+    <div class="header">
+      <div class="logo"> <span>K</span><span>E</span><span>B</span><span>U</span><span>K</span><span>E</span></div>
+    </div>
+    <div class="container" id="app">
+      <table class="drinkList">
+        <tbody>
+          <tr>
+            <th class="name">姓 名</th>
+            <th class="drink">飲 品</th>
+            <th class="sugar">甜 度</th>
+            <th class="ice">冰 量</th>
+            <th class="add">配 料</th>
+            <th class="price">價 格</th>
+            <th class="extra-info">備 註</th>
+          </tr>
+          <tr v-for="drink in drinkList">
+            <td>{{drink.name}}</td>
+            <td>{{drink.drink}}</td>
+            <td>{{drink.sugar}}</td>
+            <td>{{drink.ice}}</td>
+            <td>{{drink.add}}</td>
+            <td>{{drink.price}}</td>
+            <td>{{drink.extraInfo}}</td>
+          </tr>
+          <tr> 
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>合計</th>
+            <td>{{total}}</td>
+            <td> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+</body>
+<?!= include('order.js'); ?>
+</html>
+
+
