@@ -3,7 +3,7 @@ A web app based on google app script for group buying.  
 根據google script建立的團購網站
 # Project Demo
   [Demo](https://script.google.com/macros/s/AKfycbwSPNakaOxxDFGH8iHw_ZzQ3J7u3QpZY_ougEmyEQqpohJJiz4/exec)
-# Requirement (需求)
+# Requirement 
  - Google app script 
  - Google Firebase Realtime Database 
 # Note
